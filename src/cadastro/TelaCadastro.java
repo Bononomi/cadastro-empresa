@@ -89,7 +89,6 @@ public class TelaCadastro extends javax.swing.JPanel {
         labelCelularResponsavel = new javax.swing.JLabel();
         labelRenda = new javax.swing.JLabel();
         cpResponsavel = new javax.swing.JTextField();
-        cpRenda = new javax.swing.JTextField();
         cpCPF = new javax.swing.JFormattedTextField();
         cpCelularResponsavel = new javax.swing.JFormattedTextField();
         labelInstagram = new javax.swing.JLabel();
@@ -99,6 +98,7 @@ public class TelaCadastro extends javax.swing.JPanel {
         btnSalvar = new javax.swing.JButton();
         labelCEP = new javax.swing.JLabel();
         cpCEP = new javax.swing.JFormattedTextField();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         labelEmpresa.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         labelEmpresa.setText("Empresa: ");
@@ -254,9 +254,9 @@ public class TelaCadastro extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(labelCelularResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cpCelularResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cpRenda, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cpCelularResponsavel, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(jFormattedTextField1))
                         .addGap(90, 90, 90))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,7 +378,7 @@ public class TelaCadastro extends javax.swing.JPanel {
                     .addComponent(labelResponsavel)
                     .addComponent(labelRenda)
                     .addComponent(cpResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cpRenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCPF)
@@ -414,7 +414,7 @@ public class TelaCadastro extends javax.swing.JPanel {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
             if (validarCampos()) {
             JOptionPane.showMessageDialog(null, "CAMPOS PREENCHIDOS CORRETAMENTE");
-            JOptionPane.showMessageDialog(null, comboBoxUF.getSelectedItem());
+            
             }    }//GEN-LAST:event_btnSalvarActionPerformed
         
         // VALIDAÇÃO DE CAMPOS //
@@ -426,13 +426,16 @@ public class TelaCadastro extends javax.swing.JPanel {
            
             String empresa = cpEmpresa.getText();
             String cnpj = cpCNPJ.getText();
-            String telefone = cpTelefone.getText();
             String IE = cpIE.getText();
             String data = cpDataCadastro.getText();
             String endereco = cpEndereco.getText();
             String n = cpNumero.getText();
             String cidade = cpCidade.getText();
             String bairro = cpBairro.getText();
+            String email = cpEmail.getText();
+            String celular = cpCelular.getText();
+            String responsavel = cpResponsavel.getText();
+            String celularResponsavel = cpResponsavel.getText();
             
 
             if (empresa.trim().equals("")) {
@@ -479,21 +482,35 @@ public class TelaCadastro extends javax.swing.JPanel {
                 return false;       
             } 
             
+             if (email.trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Informe o Email!");
+                return false;       
+            } 
             
- 
-           // validator.assertValid(cpCPF.getText());
-             
-            
-            telefone = telefone.replaceAll(" ","");
-            telefone = telefone.replaceAll("-","");
+            celular = celular.replaceAll(" ","");
+            celular = celular.replaceAll("-","");
                         
-            if (telefone.trim().equals("") || telefone.trim().equals("()")){
-                JOptionPane.showMessageDialog(null, "Informe o telefone!");
+            if (celular.trim().equals("") || celular.trim().equals("()")){
+                JOptionPane.showMessageDialog(null, "Informe o Celular!");
                 return false;
             } 
-    
             
-          if (comboBoxUF.getSelectedItem().equals("Selecione")) {
+             if (responsavel.trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Informe o Responsável!");
+                return false;       
+            } 
+ 
+           validator.assertValid(cpCPF.getText());
+             
+            celularResponsavel = celularResponsavel.replaceAll(" ","");
+            celularResponsavel = celularResponsavel.replaceAll("-","");
+                        
+            if (celularResponsavel.trim().equals("") || celularResponsavel.trim().equals("()")){
+                JOptionPane.showMessageDialog(null, "Informe o Celular!");
+                return false;
+            } 
+            
+          if (comboBoxUF.getSelectedItem().equals("UF")) {
             JOptionPane.showMessageDialog(null, "Selecione a UF!");
             return false;
           } else {
@@ -526,9 +543,9 @@ public class TelaCadastro extends javax.swing.JPanel {
     private javax.swing.JTextField cpIE;
     private javax.swing.JTextField cpInstagram;
     private javax.swing.JTextField cpNumero;
-    private javax.swing.JTextField cpRenda;
     private javax.swing.JTextField cpResponsavel;
     private javax.swing.JFormattedTextField cpTelefone;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
