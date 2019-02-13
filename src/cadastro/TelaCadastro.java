@@ -225,6 +225,13 @@ public class TelaCadastro extends javax.swing.JPanel {
             ex.printStackTrace();
         }
 
+        cpRenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
+        cpRenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpRendaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -463,6 +470,10 @@ public class TelaCadastro extends javax.swing.JPanel {
             
             
             }    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void cpRendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpRendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpRendaActionPerformed
         
         // VALIDAÇÃO DE CAMPOS //
         private boolean validarCampos() {
